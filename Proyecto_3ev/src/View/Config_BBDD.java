@@ -9,7 +9,7 @@ public class Config_BBDD extends javax.swing.JFrame {
     
     static Conexion connection = new Conexion();
     static Query query = new Query();
-    static String tabla_default = "Preguntas nivel medio";
+    static String tabla_default = "Preguntas nivel fácil";
     
     public Config_BBDD() {
         initComponents();
@@ -152,8 +152,8 @@ public class Config_BBDD extends javax.swing.JFrame {
     }//GEN-LAST:event_bBuscarActionPerformed
 
     private void bAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAddActionPerformed
-        //Actualizar in = new Actualizar();
-        //in.show(); // Mostrar otro JFrame
+        Insertar in = new Insertar();
+        in.show(); // Mostrar otro JFrame
     }//GEN-LAST:event_bAddActionPerformed
 
     private void bActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActualizarActionPerformed
