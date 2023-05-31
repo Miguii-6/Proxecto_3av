@@ -8,7 +8,6 @@ public class Query {
     
     static Conexion connection;
     static String Query;
-    static String[][] Resultado;
     
     
     public String[][] SelectAllFromTable(Connection connection, String tabla){
@@ -69,7 +68,7 @@ public class Query {
     
     public String[][] Select_Query(Connection connection, String ID, String Pregunta, String Respuesta, String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
         
-        // Construimos la query que se va a lanzar a la BBDD
+        //Seleccionamos la tabla en la que haremos la query.
         switch (tabla) {
             case "Preguntas nivel fácil":
                 tabla = "PREGUNTAS_F";                      
@@ -108,51 +107,48 @@ public class Query {
             Query += " AND OpcionD = ?";
         }
         
-        try{  
-                        
+        try{                          
             // Statement permite mandar consultas SQL a la BBDD
-            PreparedStatement statement = connection.prepareStatement(Query);
-            
-            // Variable auxiliar
+            PreparedStatement statement = connection.prepareStatement(Query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
             int parametroIndex = 1;
             
-            /** 
-             * Si el valor no es nulo ni vacio reemplaza el carácter numero '?' 
-             * con en valor de la variable correspondiente en el lugar correspondiente
-             * siento parametroIndex el número del carácter '?'
-            */
             if (ID != null && !ID.isEmpty()) {
                 statement.setString(parametroIndex, ID);
                 parametroIndex++;
             }
+
             if (Pregunta != null && !Pregunta.isEmpty()) {
                 statement.setString(parametroIndex, Pregunta);
                 parametroIndex++;
             }
+
             if (Respuesta != null && !Respuesta.isEmpty()) {
                 statement.setString(parametroIndex, Respuesta);
                 parametroIndex++;
             }
+
             if (OpcionA != null && !OpcionA.isEmpty()) {
                 statement.setString(parametroIndex, OpcionA);
                 parametroIndex++;
             }
+
             if (OpcionB != null && !OpcionB.isEmpty()) {
                 statement.setString(parametroIndex, OpcionB);
                 parametroIndex++;
             }
+
             if (OpcionC != null && !OpcionC.isEmpty()) {
                 statement.setString(parametroIndex, OpcionC);
                 parametroIndex++;
             }
+            
             if (OpcionD != null && !OpcionD.isEmpty()) {
                 statement.setString(parametroIndex, OpcionD);
                 parametroIndex++;
             }
-            System.out.println("RESPUESTA SI O NO"+Respuesta+"mariconazo");
-            System.out.println(Query);
             // ResultSet nos permite recoger el resultado de nuestra consulta
-             ResultSet resultSet = statement.executeQuery(Query);
+            ResultSet resultSet = statement.executeQuery();
             
             // Obtener el número de filas y columnas del resultado
             resultSet.last(); // Nos situamos en la ultima fila
@@ -161,15 +157,14 @@ public class Query {
             int columnas = resultSet.getMetaData().getColumnCount(); // Tomamos nota del numero de columnas
 
             // Crear el array bidimensional para llenar con los resultados
-            String[][] preguntas = new String[filas][columnas];
-
+            String[][] resultados = new String[filas][columnas];
             // Situar filas en el primer resultado
             int fila = 0;
 
             // Llenar el array con los datos del resultado
             while (resultSet.next()) {                
                 for (int columna = 0; columna < columnas; columna++) {
-                    preguntas[fila][columna] = resultSet.getString(columna + 1);
+                    resultados[fila][columna] = resultSet.getString(columna + 1);
                 }
                 fila++;                
             }
@@ -177,11 +172,52 @@ public class Query {
             // Cerramos conexión
             connection.close();   
             
+            return resultados;
+            
         }catch(Exception e){ 
             System.out.println("ERROR: "+e);
         }
         
-        return Resultado;
+        return null;
         
-    } 
+    }
+    
+    public String[][] Insert_Query(Connection connection, String Pregunta, String Respuesta, String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
+    
+        //Seleccionamos la tabla en la que haremos la query.
+        switch (tabla) {
+            case "Preguntas nivel fácil":
+                tabla = "PREGUNTAS_F";                      
+                break;
+            case "Preguntas nivel medio":
+                tabla = "PREGUNTAS_M";                      
+                break;
+            case "Preguntas nivel difícil":
+                tabla = "PREGUNTAS_D";                      
+                break;
+        }
+        
+        Query = "INSERT INTO "+tabla+" (`Pregunta`, `Respuesta`, `OpcionA`, `OpcionB`, `OpcionC`, `OpcionD`) VALUES ('"+Pregunta+"', '"+Respuesta+"', '"+OpcionA+"', '"+OpcionB+"', '"+OpcionC+"', '"+OpcionD+"')";       
+        
+        try{       
+            // Realiza la inserción en la base de datos
+            PreparedStatement statement = connection.prepareStatement(Query);
+            statement.executeUpdate();
+            
+            String ID = null;
+            String[][] resultados = Select_Query(connection, ID, Pregunta, Respuesta, OpcionA, OpcionB, OpcionC, OpcionD, tabla);
+            
+            // Cerramos conexión
+            connection.close();
+            
+            return resultados;
+            
+        }catch(Exception e){ 
+            System.out.println("ERROR: "+e);
+        }
+        
+        return null;
+        
+    }
+    
 }
