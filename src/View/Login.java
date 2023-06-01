@@ -116,6 +116,7 @@ public class Login extends javax.swing.JFrame {
        //aqui chamamos ao objetoLogin para validar o usario
         Model.CLogin objetoLogin = new Model.CLogin();
        objetoLogin.validaUsuario(tfUsuario, pfPassword);
+       dispose();
     }//GEN-LAST:event_bIngresarActionPerformed
 
     private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed

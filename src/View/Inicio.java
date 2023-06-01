@@ -65,7 +65,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void bStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStartActionPerformed
         
-        Pregunta x = new Pregunta();
+        Dificultade x = new Dificultade();
         x.show();
         
         dispose();
@@ -79,7 +79,7 @@ public class Inicio extends javax.swing.JFrame {
         Login lg = new Login();
         lg.show();
         
-        dispose();
+        
     }//GEN-LAST:event_bLoginActionPerformed
 
     

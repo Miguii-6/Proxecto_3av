@@ -1,5 +1,6 @@
 package Model;
 
+import View.Inicio;
 import View.Pregunta;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,9 +39,7 @@ public class CLogin {
                 
                 JOptionPane.showMessageDialog(null,"El Usuario es Correcto");
                 
-                //que nos aparezca a pantalla das preguntas unha vez insertado o usuario
-                Pregunta objetoMenu = new Pregunta();
-                objetoMenu.setVisible(true);
+                
             }
             else
             {
