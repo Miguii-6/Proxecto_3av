@@ -1,5 +1,5 @@
 
-package InterfaceGrafica;
+package View;
 
 public class Incorrecto extends javax.swing.JFrame {
 

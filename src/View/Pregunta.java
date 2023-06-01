@@ -1,4 +1,4 @@
-package InterfaceGrafica;
+package View;
 
 import com.proyecto.preguntas.Preguntas;
 import java.util.ArrayList;

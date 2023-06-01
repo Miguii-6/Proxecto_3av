@@ -1,5 +1,7 @@
+package Controller;
 
-import InterfaceGrafica.Inicio;
+
+import View.Inicio;
 
 public class Main {
 

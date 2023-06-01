@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/DAM%201/Programación/Proyecto_Preguntas/Proyecto_2ev/src/InterfaceGrafica/Inicio.java</file>
-            <file>file:/C:/Users/Usuario/Documents/DAM%201/Programación/Proyecto_Preguntas/Proyecto_2ev/src/Main.java</file>
-            <file>file:/C:/Users/Usuario/Documents/DAM%201/Programación/Proyecto_Preguntas/Proyecto_2ev/src/InterfaceGrafica/Incorrecto.java</file>
-            <file>file:/C:/Users/Usuario/Documents/DAM%201/Programación/Proyecto_Preguntas/Proyecto_2ev/src/InterfaceGrafica/Correcto.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DAM%201/Programación/Proyecto_Preguntas/Proyecto_2ev/src/Controller/Main.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DAM%201/Programación/Proyecto_Preguntas/Proyecto_2ev/src/View/Inicio.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DAM%201/Programación/Proyecto_Preguntas/Proyecto_2ev/src/View/Incorrecto.java</file>
+            <file>file:/C:/Users/Usuario/Documents/DAM%201/Programación/Proyecto_Preguntas/Proyecto_2ev/src/View/Correcto.java</file>
         </group>
     </open-files>
 </project-private>
