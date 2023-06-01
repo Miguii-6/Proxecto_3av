@@ -161,8 +161,8 @@ public class Config_BBDD extends javax.swing.JFrame {
         //ac.show(); // Mostrar otro JFrame
     }//GEN-LAST:event_bActualizarActionPerformed
     private void bBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBorrarActionPerformed
-        //Borrar br = new Borrar();
-        //br.show(); // Mostrar otro JFrame
+        Borrar br = new Borrar();
+        br.show(); // Mostrar otro JFrame
     }//GEN-LAST:event_bBorrarActionPerformed
 
     private void jComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxActionPerformed

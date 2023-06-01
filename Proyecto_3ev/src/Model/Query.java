@@ -66,7 +66,8 @@ public class Query {
         
     }
     
-    public String[][] Select_Query(Connection connection, String ID, String Pregunta, String Respuesta, String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
+    public String[][] Select_Query(Connection connection, String ID, String Pregunta, String Respuesta, 
+            String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
         
         //Seleccionamos la tabla en la que haremos la query.
         switch (tabla) {
@@ -182,7 +183,8 @@ public class Query {
         
     }
     
-    public String[][] Insert_Query(Connection connection, String Pregunta, String Respuesta, String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
+    public String[][] Insert_Query(Connection connection, String Pregunta, String Respuesta, 
+            String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
     
         //Seleccionamos la tabla en la que haremos la query.
         switch (tabla) {
@@ -220,4 +222,84 @@ public class Query {
         
     }
     
+    public String Delete_Query(Connection connection, String Pregunta, String Respuesta, 
+            String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla){
+        
+        //Seleccionamos la tabla en la que haremos la query.
+        switch (tabla) {
+            case "Preguntas nivel fácil":
+                tabla = "PREGUNTAS_F";                      
+                break;
+            case "Preguntas nivel medio":
+                tabla = "PREGUNTAS_M";                      
+                break;
+            case "Preguntas nivel difícil":
+                tabla = "PREGUNTAS_D";                      
+                break;
+        }
+        
+        Query = "DELETE FROM "+tabla+" WHERE Pregunta = '"+Pregunta+"' AND Respuesta = '"+Respuesta+
+                "' AND OpcionA = '"+OpcionA+"' AND OpcionB = '"+OpcionB+"' AND OpcionC = '"+OpcionC+"' AND OpcionD = '"+OpcionD+"'";  
+        
+        try{       
+            // Crea un objeto Statement para ejecutar la consulta
+            Statement statement = connection.createStatement();
+
+            // Ejecuta la consulta
+            int filasAfectadas = statement.executeUpdate(Query);
+
+            String resultado;
+            
+            // Dependiendo de las filas que se borren envia un mensaje o no
+            if (filasAfectadas > 0) {
+                resultado = ("Se han eliminado " + filasAfectadas + " filas.");
+            } else {
+                resultado = "No se ha eliminado ninguna fila.";
+            }
+            
+            // Cerramos conexión
+            connection.close();
+            
+            return resultado;
+            
+        }catch(Exception e){ 
+            System.out.println("ERROR: "+e);
+        }
+        
+        return null;
+        
+    }
+        
+    public void Update_Query(Connection connection, String Pregunta, String Respuesta, 
+            String OpcionA, String OpcionB, String OpcionC, String OpcionD, String tabla, 
+            String Pregunta2, String Respuesta2, String OpcionA2, String OpcionB2, String OpcionC2, String OpcionD2){
+    
+        //Seleccionamos la tabla en la que haremos la query.
+        switch (tabla) {
+            case "Preguntas nivel fácil":
+                tabla = "PREGUNTAS_F";                      
+                break;
+            case "Preguntas nivel medio":
+                tabla = "PREGUNTAS_M";                      
+                break;
+            case "Preguntas nivel difícil":
+                tabla = "PREGUNTAS_D";                      
+                break;
+        }
+        
+        Query = "";
+                
+        try{       
+            // Realiza la inserción en la base de datos
+            //Statement statement = connection.executeUpdate(Query);
+            // Cerramos conexión
+            connection.close();
+                        
+        }catch(Exception e){ 
+            System.out.println("ERROR: "+e);
+        }
+        
+    }
+    
+        
 }
