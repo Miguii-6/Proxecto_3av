@@ -119,7 +119,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_bIngresarActionPerformed
 
     private void bSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSairActionPerformed
-        // TODO add your handling code here:
+        Inicio in = new Inicio();
+        in.show();
+        
+        dispose();
     }//GEN-LAST:event_bSairActionPerformed
 
     private void pfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfPasswordActionPerformed

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class CConexion {
     Connection conectar;
     
-    String url="jdbc:mysql://localhost/bd_login";
+    String url="jdbc:mysql://localhost/bd_preguntas";
     String usuario="root";
     String password="";
     
